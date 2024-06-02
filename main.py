@@ -80,7 +80,7 @@ class MainWindow(QMainWindow):
 
         """Main window parameters"""
         self.setWindowTitle(f"""Secret Messenger --- {self.user}'s session""")
-        self.setWindowIcon(QIcon(os.path.join(self.basedir, "lock--arrow.png")))
+        self.setWindowIcon(QIcon(os.path.join(self.basedir, "images/lock--arrow.png")))
         self.setFixedSize(1100, 780)
 
         """Main widget and layout"""
@@ -90,7 +90,7 @@ class MainWindow(QMainWindow):
 
         """Widgets"""
         # Banner
-        pixmap = QPixmap(os.path.join(self.basedir,"sm-banner.png"))
+        pixmap = QPixmap(os.path.join(self.basedir, "images/sm-banner.png"))
         banner_label = QLabel()
         banner_label.setFixedSize(1060, 100)
         banner_label.setPixmap(pixmap)
@@ -127,20 +127,20 @@ class MainWindow(QMainWindow):
         top_layer_layout.addLayout(action_radio_layout)
         top_layer_layout.addStretch()
         share_button = QPushButton(" Share my public key")
-        share_button.setIcon(QIcon(os.path.join(self.basedir,"share.png")))
+        share_button.setIcon(QIcon(os.path.join(self.basedir, "images/share.png")))
         share_button.clicked.connect(self.sharePubKey)
         top_layer_layout.addWidget(share_button)
         addressbook_button = QPushButton()
-        addressbook_button.setIcon(QIcon(os.path.join(self.basedir,"address-book.png")))
+        addressbook_button.setIcon(QIcon(os.path.join(self.basedir, "images/address-book.png")))
         addressbook_button.setToolTip("Manage my addresses")
         top_layer_layout.addWidget(addressbook_button)
         switch_button = QPushButton()
-        switch_button.setIcon(QIcon(os.path.join(self.basedir,"users.png")))
+        switch_button.setIcon(QIcon(os.path.join(self.basedir, "images/users.png")))
         switch_button.clicked.connect(self.reset)
         switch_button.setToolTip("Change user")
         top_layer_layout.addWidget(switch_button)
         help_button = QPushButton()
-        help_button.setIcon(QIcon(os.path.join(self.basedir, "question-button.png")))
+        help_button.setIcon(QIcon(os.path.join(self.basedir, "images/question-button.png")))
         help_button.setToolTip("Help")
         top_layer_layout.addWidget(help_button)
 
@@ -150,15 +150,15 @@ class MainWindow(QMainWindow):
         input_layout = QVBoxLayout()
         self.input_field = QTextEdit()
         self.input_field.setPlaceholderText(
-            f"Write or paste the text to encrypt\n\nAvoid using exotic symbols such as umlaut, tilde, and brackets"
+            """Write or paste the text to encrypt\n\nAvoid using exotic symbols such as umlaut, tilde, and brackets.\n\nMake sure to select or add the public key of the message's recipient ("the addressee"). Use the dropdown below."""
         )
         paste_button = QPushButton(" Paste")
         paste_button.setFixedWidth(90)
         paste_button.setStyleSheet("font-size:11pt;")
-        paste_button.setIcon(QIcon(os.path.join(self.basedir,"clipboard-list.png")))
+        paste_button.setIcon(QIcon(os.path.join(self.basedir, "images/clipboard-list.png")))
         paste_button.clicked.connect(self.paste)
         add_addressee_button = QPushButton()
-        add_addressee_button.setIcon((QIcon(os.path.join(self.basedir,"plus-button.png"))))
+        add_addressee_button.setIcon((QIcon(os.path.join(self.basedir, "images/plus-button.png"))))
         add_addressee_button.setToolTip("Add a new addressee")
         add_addressee_button.clicked.connect(self.addAddressee)
         input_layout.addWidget(self.input_field)
@@ -178,7 +178,7 @@ class MainWindow(QMainWindow):
 
         self.process_button = QToolButton()
         self.process_button.setText("Encrypt")
-        self.process_button.setIcon(QIcon(os.path.join(self.basedir,"Lock-72.png")))
+        self.process_button.setIcon(QIcon(os.path.join(self.basedir, "images/Lock-72.png")))
         self.process_button.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextUnderIcon)
         self.process_button.setStyleSheet('font-size:13pt;')
         self.process_button.setIconSize(QSize(64,64))
@@ -195,12 +195,12 @@ class MainWindow(QMainWindow):
         copy_button = QPushButton(" Copy")
         copy_button.setFixedWidth(90)
         copy_button.setStyleSheet("font-size:11pt")
-        copy_button.setIcon(QIcon(os.path.join(self.basedir, "document-copy.png")))
+        copy_button.setIcon(QIcon(os.path.join(self.basedir, "images/document-copy.png")))
         copy_button.clicked.connect(self.copy)
         save_button = QPushButton(" Save")
         save_button.setFixedWidth(90)
         save_button.setStyleSheet("font-size:11pt")
-        save_button.setIcon(QIcon(os.path.join(self.basedir,"disk.png")))
+        save_button.setIcon(QIcon(os.path.join(self.basedir, "images/disk.png")))
         save_button.clicked.connect(self.write)
         output_buttons_layout = QHBoxLayout()
         output_layout.addWidget(self.output_field)
@@ -310,15 +310,15 @@ class MainWindow(QMainWindow):
         if state:
             dropdown.setEnabled(True)
             self.process_button.setText("Encrypt")
-            self.process_button.setIcon(QIcon(os.path.join(self.basedir, "Lock-72.png")))
+            self.process_button.setIcon(QIcon(os.path.join(self.basedir, "images/Lock-72.png")))
             self.input_field.setPlaceholderText(
-                "Write or paste the text to encrypt\n\nAvoid using exotic symbols such as umlaut, tilde, and brackets"
+                """Write or paste the text to encrypt\n\nAvoid using exotic symbols such as umlaut, tilde, and brackets.\n\nMake sure to select or add the public key of the message's recipient ("the addressee"). Use the dropdown below."""
             )
             self.output_field.setPlaceholderText("Your ciphertext will appear here")
         else:
             dropdown.setEnabled(False)
             self.process_button.setText("Decrypt")
-            self.process_button.setIcon(QIcon(os.path.join(self.basedir, "Unlock-72.png")))
+            self.process_button.setIcon(QIcon(os.path.join(self.basedir, "images/Unlock-72.png")))
             self.input_field.setPlaceholderText("Paste the ciphertext here")
             self.output_field.setPlaceholderText("The decrypted secret message will appear here")
 

@@ -35,7 +35,7 @@ class UserSelectionDialog(QDialog):
         self.address_book = ''
 
         self.setWindowTitle("Select username")
-        self.setWindowIcon(QIcon(os.path.join(self.basedir, "users.png")))
+        self.setWindowIcon(QIcon(os.path.join(self.basedir, "images/users.png")))
         self.setFixedSize(250, 300)
         self.setStyleSheet("font-size: 14px;")
         main_layout = QVBoxLayout()
@@ -120,7 +120,7 @@ class showPubKeyDialog(QDialog):
         self.user = user
 
         self.setWindowTitle("Share your public key")
-        self.setWindowIcon(QIcon(os.path.join(self.basedir, "share.png")))
+        self.setWindowIcon(QIcon(os.path.join(self.basedir, "images/share.png")))
         self.setFixedSize(400, 400)
 
         keystring = "['" + public_key[0] + "', '" + public_key[1] + "']"
@@ -134,12 +134,12 @@ class showPubKeyDialog(QDialog):
         copy_button = QPushButton(" Copy")
         copy_button.setFixedWidth(90)
         copy_button.setStyleSheet("font-size:11pt")
-        copy_button.setIcon(QIcon(os.path.join(self.basedir, "document-copy.png")))
+        copy_button.setIcon(QIcon(os.path.join(self.basedir, "images/document-copy.png")))
         copy_button.clicked.connect(self.copy)
         save_button = QPushButton(" Save")
         save_button.setFixedWidth(90)
         save_button.setStyleSheet("font-size:11pt")
-        save_button.setIcon(QIcon(os.path.join(self.basedir, "disk.png")))
+        save_button.setIcon(QIcon(os.path.join(self.basedir, "images/disk.png")))
         save_button.clicked.connect(self.write)
         done_button = QPushButton("Done")
         done_button.setFixedWidth(90)
@@ -190,7 +190,7 @@ class addAddresseeDialog(QDialog):
         self.new_addressee = ""
 
         self.setWindowTitle("Add an addressee")
-        self.setWindowIcon(QIcon(os.path.join(self.basedir, "plus-button.png")))
+        self.setWindowIcon(QIcon(os.path.join(self.basedir, "images/plus-button.png")))
         self.setFixedSize(400, 400)
 
         main_layout = QVBoxLayout()
@@ -210,7 +210,7 @@ class addAddresseeDialog(QDialog):
         paste_button = QPushButton(" Paste")
         paste_button.setFixedWidth(90)
         paste_button.setStyleSheet("font-size:11pt;")
-        paste_button.setIcon(QIcon(os.path.join(self.basedir, "clipboard-list.png")))
+        paste_button.setIcon(QIcon(os.path.join(self.basedir, "images/clipboard-list.png")))
         paste_button.clicked.connect(self.paste)
         add_button = QPushButton("Add")
         add_button.setFixedWidth(90)
